@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">     <!-- CSS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>                  <!-- jquery? -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>                <!-- bootstrap -->
   <!--<script type="text/javascript" src="main.js"></script>-->
   <style>
     body{
@@ -19,7 +19,11 @@
   <script>
   //comment A
 var dog_array = [
-  {breed: 'akita', rating: 3.4, disposition: 'obedient', image:'http://upload.wikimedia.org/wikipedia/commons/e/e0/Japaneseakita.jpg',description:"The Akita is a large and powerful dog breed with a noble and intimidating presence. He was originally used for guarding royalty and nobility in feudal Japan. The Akita also tracked and hunted wild boar, black bear, and sometimes deer. He is a fearless and loyal guardian of his family. The Akita does not back down from challenges and does not frighten easily. Yet he is also an affectionate, respectful, and amusing dog when properly trained and socialized."
+  {breed: 'akita',
+  rating: 3.4,
+  disposition: 'obedient',
+  image:'http://upload.wikimedia.org/wikipedia/commons/e/e0/Japaneseakita.jpg',
+  description:"The Akita is a large and powerful dog breed with a noble and intimidating presence. He was originally used for guarding royalty and nobility in feudal Japan. The Akita also tracked and hunted wild boar, black bear, and sometimes deer. He is a fearless and loyal guardian of his family. The Akita does not back down from challenges and does not frighten easily. Yet he is also an affectionate, respectful, and amusing dog when properly trained and socialized."
   },
   {breed: 'beagle', rating: 4.1, disposition: 'friendly', image:'http://www.dogbreedinfo.com/images24/BeagleBayleePurebredDogs8Months1.jpg',description:"Small, compact, and hardy, Beagles are active companions for kids and adults alike. Canines in this dog breed are merry and fun loving, but being hounds, they can also be stubborn and require patient, creative training techniques. Their noses guide them through life, and they're never happier than when following an interesting scent. The Beagle originally was bred as a scenthound to track small game, mostly rabbits and hare. He is still used for this purpose in many countries, including the United States."
   },
@@ -28,7 +32,7 @@ var dog_array = [
   {breed: 'sheepdog', rating: 2.8, disposition: 'funny', image:'http://www.dogbreedinfo.com/images26/PolishLowlandSheepdogPONPurebredDogKya3YearsOld6.jpg',description:"The Old English Sheepdog is a large, athletic dog breed with an unmistakable shaggy coat. The Old English Sheepdog was historically a drover, helping farmers drive cattle and sheep to the market. Today, the good-natured Old English Sheepdog enjoys the comfort of home life and still competes in conformation, obedience, agility, and herding trials. He's an adaptable, intelligent dog with an easygoing disposition."
   }
 ];
- 
+
 /************ find_max_dog *********
 * purpose: finds the highest ranked dog and returns its index
 * input: array of dog objects
@@ -49,7 +53,7 @@ function find_max_dog(dog_array){
 }
 /************ display_dogs *********
 * purpose: display dogs by placing them in target element
-* input: 
+* input:
      target_element: element to place dog display into, as a css/jquery selector
      dog_array: array of dog objects
      max_index: the highest rated dog for display purposes
@@ -79,19 +83,19 @@ function display_dogs(target_element, dog_array, max_index)
     });
     var dog_info_div = $('<div>',{
       class: 'dog_info col-sm-8 col-xs-12',
-      
+
     });
- 
+
     var dog_breed_span = $('<span>',{
       class: 'col-md-6 col-sm-12 dog_breed',
       text: dog_breed,
     });
- 
+
     var dog_disposition_span = $('<span>',{
       class: 'col-md-4 col-sm-12 dog_disposition',
       text: dog_quality,
     });
- 
+
     var dog_rating_span = $('<span>',{
       class: 'col-md-2 col-sm-12 dog_rating',
       text: dog_rating
@@ -99,12 +103,12 @@ function display_dogs(target_element, dog_array, max_index)
     dog_info_div.append(dog_breed_span, dog_disposition_span, dog_rating_span);
     dog_box.append(dog_image, dog_info_div);
     dog_container.append(dog_box);
- 
+
   }
 }
 /************ display_one_dog *********
 * purpose: display a single dog within a bootstrap modal
-* input: 
+* input:
      dog: a single dog object
 * returns: none
 */
@@ -112,8 +116,8 @@ function display_one_dog(dog)
 {
   console.log("dog :",dog)
     var modal_element = $('#dog_modal');
- 
- 
+
+
     modal_element.find('.modal-title').text(dog.breed);
     var dog_image = $('<img>',{
       src: dog.image,
@@ -122,16 +126,16 @@ function display_one_dog(dog)
     var dog_info_div = $('<div>',{
       class: 'dog_info',
     });
- 
+
     var dog_disposition_div = $('<div>',{
       class: 'dog_disposition',
       html: '<strong>Quality</strong> '+dog.disposition,
     });
- 
+
     var dog_rating_div = $('<div>',{
       class: 'dog_rating',
       html: '<strong>Rating</strong> '+dog.rating
-    }); 
+    });
     var dog_description_div = $('<div>',{
       class: 'dog_description',
       html: '<strong>Description</strong> '+dog.description
@@ -146,8 +150,8 @@ $(document).ready(function(){
   $('#dog_stats').on('click','.dog_box',function(){
     var this_dog_index = parseInt($(this).attr('dog_id'));
     display_one_dog(dog_array[this_dog_index]);
- 
- 
+
+
   })
 });
   </script>
@@ -157,7 +161,7 @@ $(document).ready(function(){
 </div>
 <div id="dog_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
- 
+
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -165,12 +169,35 @@ $(document).ready(function(){
         <h4 class="modal-title text-capitalize"></h4>
       </div>
       <div class="modal-body">
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
- 
+
   </div>
 </div>
+
+<!--
+1) internal stylesheet: body
+2) cascadaing & specificity
+3) Every other element with class "dog_box" directly inside any element with ID "dog_stats"
+4) They Are!
+5) array
+6) string // number
+7) dog_array[2]['image']; // dog_array[2].image;
+8) dog_array[dog_array.length-1], 3
+9) 5
+10) Array index 0 has already been accounted for as the max
+11) display_dogs("#my_element,3") // display_dogs('#my_element',dog_array,3); // display_dogs('#my_element',,3);
+12) 4
+13) dog_image and dog_info_div are CHILDREN of dog_box // dog_breed_span, dog_disposition_span, dog_rating span are CHILDREN of dog_info_div;
+14) An element with ID dog_modal
+15) 2, the strong element, and the text node
+16) 2, the strong element, and the text node
+17) #dog_stats
+18) self-provoking
+19) When #dog_stats is clicked
+20) On document load
+-->
